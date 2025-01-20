@@ -1,0 +1,67 @@
+package main;
+
+public class Book {
+	String name;
+	String authorName;
+	int ISBN;
+	boolean av;
+	int yearPublished;
+	
+	
+	//getters and setters
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAuthorName() {
+		return authorName;
+	}
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+	public int getISBN() {
+		return ISBN;
+	}
+	public void setISBN(int iSBN) {
+		ISBN = iSBN;
+	}
+	public boolean getAvailability() {
+		return av;
+	}
+	public void setAvailability(boolean av) {
+		this.av = av;
+	}
+	public int getYearPublished() {
+		return yearPublished;
+	}
+	
+	public void setYearPublished(int yearPublished) {
+		this.yearPublished = yearPublished;
+	}
+	
+	
+	
+	//constructor
+		public Book(String name, String authorName, int iSBN, boolean av, int yearPublished) {
+			this.name = name;
+			this.authorName = authorName;
+			ISBN = iSBN;
+			this.av = true;
+			this.yearPublished = yearPublished;
+		}
+	
+		
+		
+	public void borrowBook() {
+		av = false;
+	}
+	
+	
+	public void returnBook() {
+		av = true;
+	}
+	
+	
+}
