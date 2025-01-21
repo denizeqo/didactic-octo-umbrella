@@ -54,7 +54,73 @@ public class Library {
 			this.librarian = librarian;
 		}
 		
+		public void registerMember(UUID id) {
+			for (User user : users) {
+				
+				if (user.getMemberID().equals(id)) {
+					System.out.println("this user already exists");
+				}
+				
+			}
+		}
 		
+		
+		public void unRegisterMember(User user) {
+			if (users.contains(user)) {
+				users.remove(user);
+				System.out.println("user removed");
+			} else {
+				System.out.println("user doesnt exist");
+			}
+		}
+		
+		 
+		public void searchByTitle (String name) {
+			
+			boolean found = false;
+			
+			for (Book book : books) {
+				if (book.getName().equalsIgnoreCase(name)) {
+					System.out.println("book found " + name);
+					found = true;
+					break;
+				}
+				
+				
+			}
+			
+			if (!found) {
+				System.out.println("Book wasnt found");
+			}
+			
+		}
+		
+		
+		public void searchByAuthor(String author) {
+				ArrayList<Book> foundBooks = new ArrayList<>();
+
+				for(Book book : books) {
+					
+					
+					if (book.authorName.equalsIgnoreCase(author)) {
+						foundBooks.add(book);
+						
+						
+					}
+					
+				}
+				
+				if(foundBooks.isEmpty()) {
+					System.out.println("no books were found");
+				}
+				
+				System.out.println("these books were found" + foundBooks);
+				
+				
+				
+			
+			
+		}
 		
 		//add book
 		
