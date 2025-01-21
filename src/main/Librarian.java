@@ -6,7 +6,7 @@ public class Librarian {
 	
 	
 	
-	private UUID librarianId;
+	private String librarianId;
 	private String librarianName;
 	
 	public void addBookToLibrary(Library library, Book book) {
@@ -16,6 +16,16 @@ public class Librarian {
 	}
 
 	
+	/**
+	 * @param uuid
+	 * @param librarianName
+	 */
+	public Librarian(String uuid, String librarianName) {
+		this.librarianId = uuid;
+		this.librarianName = librarianName;
+	}
+
+
 	public void removeBook(Library library, Book book) {
 		library.removeBook(book);
 	}

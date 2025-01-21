@@ -57,81 +57,65 @@ public class Library {
 	
 		public void registerUsers(User user) {
 		
+			boolean userExists =users.stream()
+			.anyMatch(newUser -> user.getMemberID().equals(user.getMemberID()));
 			
-			
-			for (User foundUser: users) {
-				if (foundUser.getMemberID().equals(user.getMemberID())) {
-					System.out.println("This user already exists");
-					
-					return;
+			if(userExists) {
+				System.out.println("the user already exists");
+			} else {
+				
+				if(user.getMemberID().equals(null)) {
+					user.setMemberID(UUID.randomUUID());
 				}
-			} 
+				
 				users.add(user);
-				System.out.println("user succesfully added");
+				
+				System.out.println("user registered succesfully");
+			}
 
 		}
 		
 		public void unRegisterUsers(User user) {
 			
-			for (User foundUser : users) {
-				if (foundUser.getMemberID().equals(user.getMemberID())) {
-					
-					users.remove(foundUser);
-					
-					System.out.println("User removed");
-					return;
-				}
-				
-				
-			}
-			System.out.println("user not found");
+			
+			
+			boolean removed = users.removeIf(foundUser -> foundUser.getMemberID().equals(user.getMemberID()));
+
+		    if (removed) {
+		        System.out.println("User removed");
+		    } else {
+		        System.out.println("User not found");
+		    }
 			
 			
 		}
 		
+		
+		public void searchByISBN (int ISBN) {
+			books.stream()
+			.filter(book -> book.getISBN() == ISBN)
+			.findFirst()
+			.ifPresentOrElse(book -> System.out.println("the book is found" + book), () -> 
+			System.out.println("The book isnt found with isbn" + ISBN));
+			
+			}
 		 
 		public void searchByTitle (String name) {
 			
-			boolean found = false;
-			
-			for (Book book : books) {
-				if (book.getName().equalsIgnoreCase(name)) {
-					System.out.println("book found " + name);
-					found = true;
-					return;
-				}
-				
-				
-			}
-			
-				System.out.println("Book wasnt found");
+			books.stream()
+			.filter(book -> book.getName().equals(name))
+			.findFirst()
+			.ifPresentOrElse(book -> System.out.println("The book is present" + name),
+					() -> System.out.println("book isnt present"));
 			
 		}
 		
 		
 		public void searchByAuthor(String author) {
-				ArrayList<Book> foundBooks = new ArrayList<>();
-
-				for(Book book : books) {
-					
-					
-					if (book.authorName.equalsIgnoreCase(author)) {
-						foundBooks.add(book);
-						
-						
-					}
-					
-				}
-				
-				if(foundBooks.isEmpty()) {
-					System.out.println("no books were found");
-				}
-				
-				System.out.println("these books were found" + foundBooks);
 				
 				
-				
-			
+			books.stream().filter(book -> book.getAuthorName().equalsIgnoreCase(author))
+			.forEach(book -> System.out.println(book));
 			
 		}
 		
@@ -140,25 +124,39 @@ public class Library {
 		
 		
 		public void addBook(Book book) {
-			books.add(book);
+			boolean exists = books.stream().anyMatch(addedBook -> book.getAuthorName()
+					.equalsIgnoreCase(addedBook.getAuthorName()));
+			
+			
+			if (exists) {
+				System.out.println("the book already exists");
+			} else {
+				System.out.println("the book is being added");
+				books.add(book);
+				System.out.println("book added");
+			}
+			
 		}
 		
-		
+		public void showAllBooks() {
+		    books.forEach(book -> System.out.println("Title: " 
+		+ book.getName() + ", Author: " + book.getAuthorName() + ", Year Published: " + book.getYearPublished()));
+		}
 		//remove book
 		
 		
-		public void removeBook(Book book) {
-			books.remove(book);
+		@Override
+		public String toString() {
+			return "Library [books=" + books + "]";
 		}
-		
-		
-		public void showBooks () {
+		public void removeBook(Book book) {
 			
-			for(Book book : books) {
-				
-				System.out.println(book);
-				
-			}
+			    if (books.remove(book)) {
+			        System.out.println("Book removed successfully.");
+			    } else {
+			        System.out.println("Book doesn't exist.");
+			    }
+
 		
 		}
  		

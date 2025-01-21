@@ -92,9 +92,10 @@ public class User {
 	
 	public void borrowBook(Book book) {
 		if (book.getAvailability()) {
-			System.out.println("The book is available");
 			book.setAvailability(false);
 			borrowedBooks.add(book);
+			System.out.println("The book was borrowed succesfully " + book.getName() + "and now the books availability is " +book.getAvailability());
+			borrowedBooks.forEach(foundbook -> System.out.println(foundbook.toString()));
 			
 		} else {
 			System.out.println("The  book has already been borrowed");
@@ -107,6 +108,8 @@ public class User {
 			System.out.println("the book was returned" + book.getName());
 			book.setAvailability(true);
 			borrowedBooks.remove(book);
+			
+			System.out.println(book.av);
 			
 		}
 	}

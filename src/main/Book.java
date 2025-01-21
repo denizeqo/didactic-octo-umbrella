@@ -43,17 +43,27 @@ public class Book {
 	
 	
 	
-	//constructor
-		public Book(String name, String authorName, int iSBN, boolean av, int yearPublished) {
-			this.name = name;
-			this.authorName = authorName;
-			ISBN = iSBN;
-			this.av = true;
-			this.yearPublished = yearPublished;
-		}
-	
 		
-		
+	/**
+	 * @param name
+	 * @param authorName
+	 * @param iSBN
+	 * @param av
+	 * @param yearPublished
+	 */
+	public Book(String name, String authorName, int iSBN, boolean av, int yearPublished) {
+		super();
+		this.name = name;
+		this.authorName = authorName;
+		ISBN = iSBN;
+		this.av = av;
+		this.yearPublished = yearPublished;
+	}
+	@Override
+	public String toString() {
+		return "Book [name=" + name + ", authorName=" + authorName + ", ISBN=" + ISBN + ", av=" + av
+				+ ", yearPublished=" + yearPublished + "]";
+	}
 	public void borrowBook() {
 		av = false;
 	}
