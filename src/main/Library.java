@@ -54,24 +54,39 @@ public class Library {
 			this.librarian = librarian;
 		}
 		
-		public void registerMember(UUID id) {
-			for (User user : users) {
-				
-				if (user.getMemberID().equals(id)) {
-					System.out.println("this user already exists");
+	
+		public void registerUsers(User user) {
+		
+			
+			
+			for (User foundUser: users) {
+				if (foundUser.getMemberID().equals(user.getMemberID())) {
+					System.out.println("This user already exists");
+					
+					return;
 				}
-				
-			}
+			} 
+				users.add(user);
+				System.out.println("user succesfully added");
+
 		}
 		
-		
-		public void unRegisterMember(User user) {
-			if (users.contains(user)) {
-				users.remove(user);
-				System.out.println("user removed");
-			} else {
-				System.out.println("user doesnt exist");
+		public void unRegisterUsers(User user) {
+			
+			for (User foundUser : users) {
+				if (foundUser.getMemberID().equals(user.getMemberID())) {
+					
+					users.remove(foundUser);
+					
+					System.out.println("User removed");
+					return;
+				}
+				
+				
 			}
+			System.out.println("user not found");
+			
+			
 		}
 		
 		 
@@ -83,15 +98,13 @@ public class Library {
 				if (book.getName().equalsIgnoreCase(name)) {
 					System.out.println("book found " + name);
 					found = true;
-					break;
+					return;
 				}
 				
 				
 			}
 			
-			if (!found) {
 				System.out.println("Book wasnt found");
-			}
 			
 		}
 		
