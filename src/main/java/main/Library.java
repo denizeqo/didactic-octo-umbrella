@@ -1,6 +1,7 @@
 package main;
-import java.util.ArrayList;
-import java.util.UUID;
+
+import javax.swing.text.html.HTMLEditorKit.Parser;
+
 public class Library {
 		
 	
@@ -13,34 +14,46 @@ public class Library {
 		
 	
 		public void registerUsers(User user) {
+			
+			System.out.println("User Is Being Added...");
+			userDAO.addUser(user);
+			
+		}
+			
+			
 		
-}
 
 		
 		
 		public void unRegisterUsers(User user) {
-			
-			
-			
-			
-			
+			System.out.println("User Is Being Removed...");
+			userDAO.removeUser(user.getMemberID());			
 		}
+		
+		
 		
 		
 		public void searchByISBN (int ISBN) {
 			
 			
+			System.out.println("Searching With ISBN..." + ISBN);
+			BookDAO.searchByField("ISBN",String.valueOf(ISBN), "int");
+			
 			}
 		 
 		public void searchByTitle (String name) {
-			
+			System.out.println("Searching With Title...");
+			BookDAO.searchByField("name", name, "string");
 			
 			
 		}
 		
 		
 		public void searchByAuthor(String author) {
-				
+			
+			
+				System.out.println("Seaching With Author...");
+				BookDAO.searchByField("authorname", author, "string");
 				
 			
 			

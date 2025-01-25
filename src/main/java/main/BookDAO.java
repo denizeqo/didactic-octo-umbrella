@@ -2,6 +2,7 @@ package main;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BookDAO {
@@ -54,19 +55,35 @@ public class BookDAO {
 	}
 	
 	
-	public static void searchByISBN(int ISBN) {
-		
-		String query = "SELECT isbn FROM books WHERE isbn= ?";
-		
-		try(Connection connection = MySqlConnection.conn()) {
-			PreparedStatement stmt = connection.prepareStatement(query);
-			
-			stmt.setInt(1, ISBN);
-			
-		} catch (SQLException e){
-			
-		}
-		
+	public static void searchByField(String column, String value, String dataType) {
+	    String query = "SELECT " + column +" FROM Books WHERE " + value + " = ?";
+	    
+	    
+	    try(Connection connection = MySqlConnection.conn()) {
+	    	
+	    	
+	    	PreparedStatement stmt = MySqlConnection.conn().prepareStatement(query);
+	    	
+	    	switch(dataType.toLowerCase()) {
+	    	case "int": 
+	    		stmt.setInt(1, Integer.parseInt(value));
+	    		break;
+	    	case "string":
+	    		stmt.setString(1, value);
+	    		break;
+	    	case "boolean":
+	    		stmt.setBoolean(1, Boolean.parseBoolean(value));
+	    		break;
+	    	default: System.out.println("Unsuported DataType");
+	    	return;
+	    	}
+	    	ResultSet rs = stmt.executeQuery();
+	    	
+	    	System.out.println("Book Was Found By " + column);
+	    	
+	    } catch (SQLException e) {
+	    	System.out.println("Error Searching By " + column);
+	    }
 	}
 }
 
