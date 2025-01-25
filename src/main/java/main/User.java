@@ -6,8 +6,8 @@ import java.util.UUID;
 public class User {
 	
 	String name;
-	private UUID memberID;
-	private int phoneNumber;
+	private String memberID;
+	private String phoneNumber;
 	private String Address;
 	ArrayList <Book> borrowedBooks = new ArrayList<>();
 	/**
@@ -25,25 +25,25 @@ public class User {
 	/**
 	 * @return the memberID
 	 */
-	public UUID getMemberID() {
+	public String getMemberID() {
 		return memberID;
 	}
 	/**
-	 * @param memberID the memberID to set
+	 * @param uuid the memberID to set
 	 */
-	public void setMemberID(UUID memberID) {
-		this.memberID = memberID;
+	public void setMemberID(String uuid) {
+		this.memberID = uuid;
 	}
 	/**
 	 * @return the phoneNumber
 	 */
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	/**
 	 * @param phoneNumber the phoneNumber to set
 	 */
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	/**
@@ -79,7 +79,7 @@ public class User {
 	 */
 	
 	
-	public User(String name, UUID memberID, int phoneNumber, String address, ArrayList<Book> borrowedBooks) {
+	public User(String name, String memberID, String phoneNumber, String address, ArrayList<Book> borrowedBooks) {
 		super();
 		this.name = name;
 		this.memberID = memberID;
