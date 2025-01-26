@@ -16,7 +16,7 @@ public class BookDAO {
 			PreparedStatement stmt = connection.prepareStatement(query);
 			stmt.setString(1, book.getName());
 			stmt.setString(2, book.getAuthorName());
-			stmt.setInt(3, book.getISBN());
+			stmt.setInt(3, book.getIsbn());
 			stmt.setBoolean(4, book.getAvailability());
 			stmt.setInt(5, book.getYearPublished());
 			stmt.setObject(6, book.getBookID().toString());
