@@ -1,13 +1,14 @@
-package main;
+package main.model;
 
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Book {
 
-	String name;
+	//TODO: ALWAYS MAKE VARIABLES PRIVATE or PROTECTED to prevent direct access
+	private String name;
 	String authorName;
-	int ISBN;
+	//TODO: Use wrapper classes instead of primitive types
+	private Integer isbn;
 	UUID bookID;
 	boolean av;
 	int yearPublished;
@@ -15,8 +16,8 @@ public class Book {
 
 
 	//getters and setters
-	
-	
+
+
 	/**
 	 * @return the bookID
 	 */
@@ -65,11 +66,11 @@ public class Book {
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
-	public int getISBN() {
-		return ISBN;
+	public int getIsbn() {
+		return isbn;
 	}
-	public void setISBN(int iSBN) {
-		ISBN = iSBN;
+	public void setIsbn(int iSBN) {
+		isbn = iSBN;
 	}
 	public boolean getAvailability() {
 		return av;
@@ -91,24 +92,24 @@ public class Book {
 	/**
 	 * @param name
 	 * @param authorName
-	 * @param iSBN
+	 * @param isbn
 	 * @param av
 	 * @param yearPublished
 	 */
-	public Book(String name, String authorName, boolean av, int yearPublished, int ISBN, int numberOfCopies) {
+	public Book(String name, String authorName, boolean av, int yearPublished, int isbn, int numberOfCopies) {
 		super();
 		this.name = name;
 		this.authorName = authorName;
-		this.ISBN = ISBN;
+		this.isbn = isbn;
 		this.av = av;
 		this.yearPublished = yearPublished;
 		this.bookID = UUID.randomUUID();
 		this.numberOfCopies = numberOfCopies;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Book [name=" + name + ", authorName=" + authorName + ", ISBN=" + ISBN + ", bookID=" + bookID + ", av="
+		return "Book [name=" + name + ", authorName=" + authorName + ", ISBN=" + isbn + ", bookID=" + bookID + ", av="
 				+ av + ", yearPublished=" + yearPublished + ", numberOfCopies=" + numberOfCopies + "]";
 	}
 	public void borrowBook() {
