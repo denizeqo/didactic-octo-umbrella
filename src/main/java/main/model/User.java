@@ -1,14 +1,15 @@
-package main;
+package main.model;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
+//TODO: FORMAT CODE, See other classes for reference
 public class User {
-	
+
 	String name;
 	private String memberID;
 	private String phoneNumber;
-	private String Address;
+	private String address;
 	ArrayList <Book> borrowedBooks = new ArrayList<>();
 	/**
 	 * @return the name
@@ -50,13 +51,13 @@ public class User {
 	 * @return the address
 	 */
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	/**
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	/**
 	 * @return the borrowedBooks
@@ -77,38 +78,38 @@ public class User {
 	 * @param address
 	 * @param borrowedBooks
 	 */
-	
-	
+
+
 	public User(String name, String phoneNumber, String address) {
 		super();
 		this.name = name;
 		this.memberID = UUID.randomUUID().toString();
 		this.phoneNumber = phoneNumber;
-		Address = address;
+		this.address = address;
 		this.borrowedBooks = borrowedBooks;
 	}
-	
-	
-	
+
+
+
 	public void borrowBook(Book book) {
-		
+
 	}
-	
-	
+
+
 	public void returnBook(Book book) {
 		if(borrowedBooks.contains(book)) {
 			System.out.println("the book was returned" + book.getName());
 			book.setAvailability(true);
 			borrowedBooks.remove(book);
-			
+
 			System.out.println(book.av);
-			
+
 		}
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 }

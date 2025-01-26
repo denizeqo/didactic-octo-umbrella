@@ -1,13 +1,15 @@
-package main;
+package main.service;
 
+import main.configuration.MySqlConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.UUID;
+import main.model.Book;
 
-public class BookDAO {
+public class BookService {
 
 	public static void addBook(Book book) {
 		String query = "INSERT INTO Books (name, authorName, ISBN, isAvailable, yearPublished, bookID, numberOfCopies) VALUES (?,?, ?, ?, ?, ?, ?)";

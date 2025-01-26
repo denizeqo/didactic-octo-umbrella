@@ -1,11 +1,14 @@
-package main;
+package main.service;
 
+import main.configuration.MySqlConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
+import main.model.User;
 
-public class UserDAO {
+//TODO: FORMAT CODE, See other classes for reference
+public class UserService {
 
 	public static void removeUser(UUID memberID) {
 		String query = "DELETE FROM Users WHERE memberID = ?";
@@ -47,7 +50,7 @@ public class UserDAO {
 			System.out.println("User Added Succesfully" + user);
 		} catch (SQLException e) {
 			System.out.println("Error Adding User to DB" + user + e.getMessage());
-		} 
+		}
 	}
 
 }

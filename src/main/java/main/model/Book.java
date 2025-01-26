@@ -1,13 +1,13 @@
-package main;
+package main.model;
 
 import java.util.UUID;
 
 public class Book {
 
-	//ALWAYS MAKE VARIABLES PRIVATE or PROTECTED to prevent direct access
+	//TODO: ALWAYS MAKE VARIABLES PRIVATE or PROTECTED to prevent direct access
 	private String name;
 	String authorName;
-	//Use wrapper classes for primitive types
+	//TODO: Use wrapper classes instead of primitive types
 	private Integer isbn;
 	UUID bookID;
 	boolean av;

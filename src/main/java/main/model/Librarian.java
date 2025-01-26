@@ -1,10 +1,9 @@
-package main;
+package main.model;
 
 import java.util.UUID;
 
+//TODO: FORMAT CODE, See other classes for reference
 public class Librarian {
-
-
 
 	private String librarianId;
 	private String librarianName;
