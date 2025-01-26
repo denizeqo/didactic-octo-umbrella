@@ -19,10 +19,6 @@ public class Library {
 			userDAO.addUser(user);
 			
 		}
-			
-			
-		
-
 		
 		
 		public void unRegisterUsers(User user) {
@@ -54,9 +50,6 @@ public class Library {
 			
 				System.out.println("Seaching With Author...");
 				BookDAO.searchByField("authorname", author, "string");
-				
-			
-			
 		}
 		
 		//add book
@@ -65,10 +58,19 @@ public class Library {
 		
 		public void addBook(Book book) {
 			
+			
+			
+			System.out.println("Adding Book: " + book.getName() + "...");
+			
+			BookDAO.addBook(book);
+			
+			
 		}
 		
 		public void showAllBooks() {
 		  
+			System.out.println("Showing All Books...");
+			BookDAO.showAllBooks();
 			
 			
 		}
@@ -76,11 +78,17 @@ public class Library {
 		
 		
 		public void removeBook(Book book) {
-			
-			
-		
+			System.out.println("Removing" + book.getName() + "...");
+			BookDAO.removeBook(book);
 		}
  		
+		
+		public void removeAllBooks() {
+			System.out.println("Removing All Books...");
+			BookDAO.removeAllBooks();
+			
+			
+		}
 		
 		
 		

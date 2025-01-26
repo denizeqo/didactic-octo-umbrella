@@ -15,7 +15,7 @@ public class MySqlConnection {
 		try {
 			Connection connection = DriverManager.getConnection(db,user,password);
 			
-			System.out.println("Connection succesfull!");
+//			System.out.println("Connection succesfull!");
 			
 			return connection;
 		} catch (SQLException e) {

@@ -1,6 +1,10 @@
 package main;
 
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Book {
+	
 	String name;
 	String authorName;
 	int ISBN;
@@ -51,11 +55,11 @@ public class Book {
 	 * @param av
 	 * @param yearPublished
 	 */
-	public Book(String name, String authorName, int iSBN, boolean av, int yearPublished) {
+	public Book(String name, String authorName, boolean av, int yearPublished) {
 		super();
 		this.name = name;
 		this.authorName = authorName;
-		ISBN = iSBN;
+		ISBN = ThreadLocalRandom.current().nextInt(1000, 10000);
 		this.av = av;
 		this.yearPublished = yearPublished;
 	}

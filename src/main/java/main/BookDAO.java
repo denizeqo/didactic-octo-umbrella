@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
+
+import javax.print.PrintException;
 
 public class BookDAO {
 	
 	
 	public static void addBook(Book book) {
-		String query = "INSERT INTO Books (name, authorName, ISBN, av, yearPublished) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO Books (name, authorName, ISBN, isAvailable, yearPublished) VALUES (?, ?, ?, ?, ?)";
 		try(Connection connection = MySqlConnection.conn()) {
 			
 			PreparedStatement stmt = connection.prepareStatement(query);
@@ -24,7 +27,7 @@ public class BookDAO {
 		} catch(SQLException e) {
 			
 		System.out.println("Book error to add" + e.getMessage());
-		
+		e.printStackTrace();
 			
 		}
 		
@@ -50,6 +53,7 @@ public class BookDAO {
 		} catch(SQLException e) {
 			
 			System.out.println("Error removing the book" + e.getMessage());
+			e.printStackTrace();
 			
 		}
 	}
@@ -79,13 +83,88 @@ public class BookDAO {
 	    	}
 	    	ResultSet rs = stmt.executeQuery();
 	    	
-	    	System.out.println("Book Was Found By " + column);
+	    	
+	    	if(rs.next()) {
+	    		System.out.println("Book Was Found By"); 
+	    	} else {
+	    		System.out.println("No Book Was Found By" + column + rs.getString(column));
+	    	}
 	    	
 	    } catch (SQLException e) {
 	    	System.out.println("Error Searching By " + column);
+	    	e.printStackTrace();
 	    }
 	}
+
+	public static void showAllBooks() {
+		String query = "SELECT * FROM Books";
+		try(Connection connection = MySqlConnection.conn()){
+			PreparedStatement stmt = connection.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery();
+			
+int i = 1;
+
+boolean hasBooks = false;
+			
+			while(rs.next()) {
+				hasBooks = true;
+				
+				//book number
+				String name = rs.getString("name");
+				String authorname = rs.getString("authorname");
+				int isbn = rs.getInt("ISBN");
+				boolean av =rs.getBoolean("isAvailable");
+				String year = rs.getString("yearPublished");
+				
+				System.out.println("Book nr-" + i  +"Book Title: " + name +" Author: " +authorname+" ISBN: " +isbn+" isAvailable: " +av+" Year Published: " +year);
+				i++;
+				
+			
+			} 
+			
+			if (!hasBooks) {
+				System.out.println("No Books To Show");
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Error Showing All Books");
+		}
+	}
+	
+	
+	public static void removeAllBooks() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Are you Sure You Want To Delete Every Book?");
+		String query = "DELETE FROM Books";
+		String answer = scanner.nextLine();
+		
+		if(answer.equals("y")) {
+			try(Connection connection = MySqlConnection.conn()) {
+				PreparedStatement stmt = connection.prepareStatement(query);
+				stmt.execute();
+				System.out.println("All books have been removed");
+				
+				
+				
+			
+			
+			
+	}catch(SQLException e) {
+		e.getMessage();
+		System.out.println("error deleting all books");
+	}
+		
+} else {
+	System.out.println("Removing All Books Has Stopped");
 }
+		
+	}
+
+
+}
+
 
 
 
