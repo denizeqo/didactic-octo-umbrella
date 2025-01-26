@@ -11,9 +11,48 @@ public class Book {
 	UUID bookID;
 	boolean av;
 	int yearPublished;
+	int numberOfCopies;
 
 
 	//getters and setters
+	
+	
+	/**
+	 * @return the bookID
+	 */
+	public UUID getBookID() {
+		return bookID;
+	}
+	/**
+	 * @return the av
+	 */
+	public boolean isAv() {
+		return av;
+	}
+	/**
+	 * @param av the av to set
+	 */
+	public void setAv(boolean av) {
+		this.av = av;
+	}
+	/**
+	 * @return the numberOfCopies
+	 */
+	public int getNumberOfCopies() {
+		return numberOfCopies;
+	}
+	/**
+	 * @param numberOfCopies the numberOfCopies to set
+	 */
+	public void setNumberOfCopies(int numberOfCopies) {
+		this.numberOfCopies = numberOfCopies;
+	}
+	/**
+	 * @param bookID the bookID to set
+	 */
+	public void setBookID(UUID bookID) {
+		this.bookID = bookID;
+	}
 	public String getName() {
 		return name;
 	}
@@ -56,18 +95,21 @@ public class Book {
 	 * @param av
 	 * @param yearPublished
 	 */
-	public Book(String name, String authorName, boolean av, int yearPublished) {
+	public Book(String name, String authorName, boolean av, int yearPublished, int ISBN, int numberOfCopies) {
 		super();
 		this.name = name;
 		this.authorName = authorName;
-		ISBN = ThreadLocalRandom.current().nextInt(1000, 10000);
+		this.ISBN = ISBN;
 		this.av = av;
 		this.yearPublished = yearPublished;
+		this.bookID = UUID.randomUUID();
+		this.numberOfCopies = numberOfCopies;
 	}
+	
 	@Override
 	public String toString() {
-		return "Book [name=" + name + ", authorName=" + authorName + ", ISBN=" + ISBN + ", av=" + av
-				+ ", yearPublished=" + yearPublished + "]";
+		return "Book [name=" + name + ", authorName=" + authorName + ", ISBN=" + ISBN + ", bookID=" + bookID + ", av="
+				+ av + ", yearPublished=" + yearPublished + ", numberOfCopies=" + numberOfCopies + "]";
 	}
 	public void borrowBook() {
 		av = false;

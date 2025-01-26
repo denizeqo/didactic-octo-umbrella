@@ -1,5 +1,7 @@
 package main;
 
+import java.util.UUID;
+
 import javax.swing.text.html.HTMLEditorKit.Parser;
 
 public class Library {
@@ -21,9 +23,9 @@ public class Library {
 		}
 		
 		
-		public void unRegisterUsers(User user) {
+		public void unRegisterUsers(UUID id) {
 			System.out.println("User Is Being Removed...");
-			userDAO.removeUser(user.getMemberID());			
+			userDAO.removeUser(id);			
 		}
 		
 		
@@ -77,9 +79,9 @@ public class Library {
 		//remove book
 		
 		
-		public void removeBook(int isbn) {
-			System.out.println("Removing" + isbn + "...");
-			BookDAO.removeBook(isbn);
+		public void removeBook(UUID id) {
+			System.out.println("Removing" + id + "...");
+			BookDAO.removeBook(id);
 		}
  		
 		

@@ -3,16 +3,17 @@ package main;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.UUID;
 
 public class UserDAO {
 
-	public static void removeUser(String memberID) {
+	public static void removeUser(UUID memberID) {
 		String query = "DELETE FROM Users WHERE memberID = ?";
 
 
 		try (Connection connection = MySqlConnection.conn()) {
 			PreparedStatement stmt = connection.prepareStatement(query);
-			stmt.setString(1, memberID);
+			stmt.setObject(1, memberID);
 			int rowseffected = stmt.executeUpdate();
 			if(rowseffected == 1) {
 				System.out.println("User Removed Succesfully");

@@ -1,5 +1,7 @@
 package main;
 
+import java.util.UUID;
+
 public class Librarian {
 
 
@@ -24,8 +26,8 @@ public class Librarian {
 	}
 
 
-	public void removeBook(Library library, Book book) {
-		library.removeBook(book);
+	public void removeBook(Library library, UUID bookID) {
+		library.removeBook(bookID);
 	}
 
 
