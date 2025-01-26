@@ -4,14 +4,14 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Book {
-	
+
 	String name;
 	String authorName;
 	int ISBN;
 	boolean av;
 	int yearPublished;
-	
-	
+
+
 	//getters and setters
 	public String getName() {
 		return name;
@@ -40,14 +40,14 @@ public class Book {
 	public int getYearPublished() {
 		return yearPublished;
 	}
-	
+
 	public void setYearPublished(int yearPublished) {
 		this.yearPublished = yearPublished;
 	}
-	
-	
-	
-		
+
+
+
+
 	/**
 	 * @param name
 	 * @param authorName
@@ -71,11 +71,11 @@ public class Book {
 	public void borrowBook() {
 		av = false;
 	}
-	
-	
+
+
 	public void returnBook() {
 		av = true;
 	}
-	
-	
+
+
 }

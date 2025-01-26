@@ -1,19 +1,19 @@
 package main;
 
 public class Librarian {
-	
-	
-	
+
+
+
 	private String librarianId;
 	private String librarianName;
-	
+
 	public void addBookToLibrary(Library library, Book book) {
-		
+
 		library.addBook(book);
-		
+
 	}
 
-	
+
 	/**
 	 * @param uuid
 	 * @param librarianName
@@ -27,7 +27,7 @@ public class Librarian {
 	public void removeBook(Library library, Book book) {
 		library.removeBook(book);
 	}
-	
-	
+
+
 
 }

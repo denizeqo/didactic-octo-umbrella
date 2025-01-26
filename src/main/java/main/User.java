@@ -79,10 +79,10 @@ public class User {
 	 */
 	
 	
-	public User(String name, String memberID, String phoneNumber, String address, ArrayList<Book> borrowedBooks) {
+	public User(String name, String phoneNumber, String address) {
 		super();
 		this.name = name;
-		this.memberID = memberID;
+		this.memberID = UUID.randomUUID().toString();
 		this.phoneNumber = phoneNumber;
 		Address = address;
 		this.borrowedBooks = borrowedBooks;

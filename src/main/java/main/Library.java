@@ -77,9 +77,9 @@ public class Library {
 		//remove book
 		
 		
-		public void removeBook(Book book) {
-			System.out.println("Removing" + book.getName() + "...");
-			BookDAO.removeBook(book);
+		public void removeBook(int isbn) {
+			System.out.println("Removing" + isbn + "...");
+			BookDAO.removeBook(isbn);
 		}
  		
 		
