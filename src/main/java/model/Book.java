@@ -1,4 +1,4 @@
-package main;
+package main.java.model;
 
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,32 +11,39 @@ public class Book {
 	boolean av;
 	int yearPublished;
 
-
-	//getters and setters
+	// getters and setters
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getAuthorName() {
 		return authorName;
 	}
+
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
+
 	public int getISBN() {
 		return ISBN;
 	}
+
 	public void setISBN(int iSBN) {
 		ISBN = iSBN;
 	}
+
 	public boolean getAvailability() {
 		return av;
 	}
+
 	public void setAvailability(boolean av) {
 		this.av = av;
 	}
+
 	public int getYearPublished() {
 		return yearPublished;
 	}
@@ -44,9 +51,6 @@ public class Book {
 	public void setYearPublished(int yearPublished) {
 		this.yearPublished = yearPublished;
 	}
-
-
-
 
 	/**
 	 * @param name
@@ -63,19 +67,19 @@ public class Book {
 		this.av = av;
 		this.yearPublished = yearPublished;
 	}
+
 	@Override
 	public String toString() {
 		return "Book [name=" + name + ", authorName=" + authorName + ", ISBN=" + ISBN + ", av=" + av
 				+ ", yearPublished=" + yearPublished + "]";
 	}
+
 	public void borrowBook() {
 		av = false;
 	}
 
-
 	public void returnBook() {
 		av = true;
 	}
-
 
 }

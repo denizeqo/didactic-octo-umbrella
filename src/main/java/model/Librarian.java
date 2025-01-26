@@ -1,8 +1,8 @@
-package main;
+package main.java.model;
+
+import main.java.services.Library;
 
 public class Librarian {
-
-
 
 	private String librarianId;
 	private String librarianName;
@@ -13,7 +13,6 @@ public class Librarian {
 
 	}
 
-
 	/**
 	 * @param uuid
 	 * @param librarianName
@@ -23,11 +22,8 @@ public class Librarian {
 		this.librarianName = librarianName;
 	}
 
-
 	public void removeBook(Library library, Book book) {
-		library.removeBook(book);
+
 	}
-
-
 
 }
