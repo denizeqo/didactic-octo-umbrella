@@ -8,6 +8,7 @@ public class Book {
 	String name;
 	String authorName;
 	int ISBN;
+	UUID bookID;
 	boolean av;
 	int yearPublished;
 
