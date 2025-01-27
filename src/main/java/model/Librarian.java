@@ -1,22 +1,12 @@
-package main.java.model;
+package model;
 
-import main.java.services.Library;
+public class Librarian extends User {
 
-public class Librarian {
-
-	private String librarianId;
-	private String librarianName;
-	/**
-	 * @param uuid
-	 * @param librarianName
-	 */
-	public Librarian(String uuid, String librarianName) {
-		this.librarianId = uuid;
-		this.librarianName = librarianName;
+	public Librarian(String name, String phoneNumber, String address) {
+		super(name, phoneNumber, address);
+		// TODO Auto-generated constructor stub
 	}
 
-	public void removeBook(Library library, Book book) {
 
-	}
 
 }

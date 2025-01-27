@@ -1,6 +1,5 @@
-package main.java.model;
+package model;
 
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Book {

@@ -1,12 +1,13 @@
-package main.java.services.DAO;
+package services.DAO;
+import configuration.MySqlConnection;
+import model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import main.java.configuration.MySqlConnection;
-import main.java.model.User;
+
 
 public class UserDAO {
 
@@ -36,7 +37,7 @@ public class UserDAO {
 		try (Connection connection = MySqlConnection.conn()) {
 			PreparedStatement stmt = connection.prepareStatement(addUser);
 			stmt.setString(1, user.getName());
-			stmt.setString(2, user.getMemberID());
+			stmt.setObject(2, user.getMemberID().toString());
 			stmt.setString(3, user.getPhoneNumber());
 			stmt.setString(4, user.getAddress());
 			stmt.executeUpdate();
@@ -53,7 +54,6 @@ public class UserDAO {
 		try (Connection connection = MySqlConnection.conn()) {
 			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Users");
 			ResultSet rs = stmt.executeQuery();
-			boolean foundNames;
 			while(rs.next()) {
 				String name = rs.getString("name");
 				System.out.println("Name of the user: " + name + " MemberID: " + rs.getString("memberID"));

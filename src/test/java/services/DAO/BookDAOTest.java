@@ -8,5 +8,10 @@ class BookDAOTest {
 
     @Test
     void checkAvailability() {
+        BookDAO book = new BookDAO();
+
+        boolean isav = book.checkAvailability(222414);
+
+        assertEquals(true, isav);
     }
 }

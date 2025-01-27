@@ -1,15 +1,16 @@
-package main.java.services.DAO;
+package services.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.UUID;
 
 import javax.print.PrintException;
 
-import main.java.configuration.MySqlConnection;
-import main.java.model.Book;
+import configuration.MySqlConnection;
+import model.Book;
 
 public class BookDAO {
 
@@ -64,7 +65,7 @@ public class BookDAO {
 
 		try (Connection connection = MySqlConnection.conn()) {
 
-			PreparedStatement stmt = MySqlConnection.conn().prepareStatement(query);
+			PreparedStatement stmt = connection.prepareStatement(query);
 
 			switch (dataType.toLowerCase()) {
 			case "int":
@@ -135,6 +136,7 @@ public class BookDAO {
 		System.out.println("Are you Sure You Want To Delete Every Book?");
 		String query = "DELETE FROM Books";
 		String answer = scanner.nextLine();
+		scanner.close();
 
 		if (answer.equals("y")) {
 			try (Connection connection = MySqlConnection.conn()) {
@@ -153,4 +155,39 @@ public class BookDAO {
 
 	}
 
+	public static boolean checkAvailability(int isbn) {
+		boolean isav = true;
+		
+		try (Connection connection = MySqlConnection.conn()) {
+			
+			String query = "SELECT isAvailable FROM Books WHERE isbn = ?";
+			PreparedStatement stmt = connection.prepareStatement(query);
+			
+			ResultSet rs = stmt.executeQuery();
+			isav = rs.getBoolean("isAvailable");
+			
+			System.out.println("checking for book" + isav );
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+		}
+		
+		return isav;
+		
+			
+
+		
+		
+	}
+
+
+
+
+
+
 }
+
+
