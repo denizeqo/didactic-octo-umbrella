@@ -23,7 +23,6 @@ target/
 *.tar.gz
 *.rar
 *.xml
-.gitignore
 *.lst
 *.iml
 *.properties
