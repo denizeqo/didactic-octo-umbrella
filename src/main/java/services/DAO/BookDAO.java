@@ -1,4 +1,4 @@
-package main.java.services;
+package main.java.services.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

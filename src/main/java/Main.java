@@ -5,6 +5,7 @@ import java.util.Scanner;
 import main.java.model.Book;
 import main.java.model.User;
 import main.java.services.Library;
+import main.java.services.DAO.UserDAO;
 
 public class Main {
 
@@ -15,6 +16,9 @@ public class Main {
 	private static Library library = new Library();
 
 	public static void main(String[] args) {
+		
+		UserDAO.showAllUsers();
+		
 		while (true) {
 			System.out.println("\n--- Library Management System ---");
 			System.out.println("1. Add Book");
