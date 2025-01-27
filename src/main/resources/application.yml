@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: didactic-umbrella
+  datasource:
+    url: jdbc:mysql://localhost:3306/libraryDB
+    username: deni
+    password: 123deni123deni
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
