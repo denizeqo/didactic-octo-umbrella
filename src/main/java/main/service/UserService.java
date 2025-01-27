@@ -1,56 +1,29 @@
 package main.service;
 
-import main.configuration.MySqlConnection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.UUID;
 import main.model.User;
+import main.service.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-//TODO: FORMAT CODE, See other classes for reference
+@Service
 public class UserService {
 
-	public static void removeUser(UUID memberID) {
-		String query = "DELETE FROM Users WHERE memberID = ?";
+    private final UserRepository userRepository;
 
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-		try (Connection connection = MySqlConnection.conn()) {
-			PreparedStatement stmt = connection.prepareStatement(query);
-			stmt.setObject(1, memberID);
-			int rowseffected = stmt.executeUpdate();
-			if(rowseffected == 1) {
-				System.out.println("User Removed Succesfully");
-			} else {
+    public void removeUser(String memberID) {
+        userRepository.findById(memberID).ifPresent(user -> {
+            userRepository.deleteById(memberID);
+            System.out.println("User Removed Successfully");
+        });
+    }
 
-				System.out.println("No Users Removed");
-
-			}
-
-
-
-		} catch (SQLException e) {
-
-
-
-		}
-	}
-
-
-
-	public static void addUser(User user) {
-		String addUser = "INSERT INTO Users (name,memberID,phoneNumber,address) VALUES (?,?,?,?)" ;
-		try(Connection connection = MySqlConnection.conn()) {
-			PreparedStatement stmt = connection.prepareStatement(addUser);
-			stmt.setString(1, user.getName());
-			stmt.setString(2, user.getMemberID());
-			stmt.setString(3, user.getPhoneNumber());
-			stmt.setString(4, user.getAddress());
-			stmt.executeUpdate();
-
-			System.out.println("User Added Succesfully" + user);
-		} catch (SQLException e) {
-			System.out.println("Error Adding User to DB" + user + e.getMessage());
-		}
-	}
-
+    public void addUser(User user) {
+        userRepository.save(user);
+        System.out.println("User Added Successfully: " + user);
+    }
 }
